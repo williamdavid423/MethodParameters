@@ -29,10 +29,13 @@ namespace MethodParameters
             CanVote(age);
 
             //get values for question 3 and send them to the WelcomeUser method
-
+            string username = userInput.Text;
+            int pinNumber = Convert.ToInt32(pinInput.Text);
+            Welcomeuser(username, pinNumber);
 
             //get value for question 4 and send it to the InchToCm method
-
+            double inches = Convert.ToDouble(inchesInput.Text);
+            InchToCm();
 
         }
 
@@ -49,7 +52,9 @@ namespace MethodParameters
 
         public void Add(int x, int y)
         {
+            int sum = x + y;
 
+            q1Output.Text = $"{x} + {y} = {sum}";
         }
 
         // 2. Create a method called CanVote, that accepts an int parameter, 
@@ -65,7 +70,14 @@ namespace MethodParameters
 
         public void CanVote(int voterAge)
         {
-
+            if(voterAge >= 18)
+            {
+                q2Output.Text = "you are eligible to vote";
+            }
+            else
+            {
+                q2Output.Text = "you are not eligible to vote";
+            }
         }
 
         // 3. Create a method called WelcomeUser, that accepts 2 string 
@@ -79,7 +91,17 @@ namespace MethodParameters
         //
         //    Input: Mr. T, 1234
         //    Welcome Mr. T
-
+        public void Welcomeuser(string name, int pin)
+        {
+            if(pin == 1234)
+                {
+                q3Output.Text = $"Welcome {name}";
+            }
+            else
+            {
+                q3Output.Text = $"Incorrect pin";
+            }
+        }
 
 
         // 4. Create a method called InchToCm, that accepts a double 
@@ -93,8 +115,13 @@ namespace MethodParameters
         //
         //    Input: 3.4
         //    3.4 inches is 8.636 cms
+        public void InchToCm()
+        {
+            double cm = inches * 2.54;
 
-
+            q4Output.Text = $"{inches} inches is {cm} cms";
+        }
+   
 
     }
 }
